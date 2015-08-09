@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="512px"
+        android:layout_height="512px"
+        android:src="@drawable/app_icon_splash"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="71dp"
+        android:id="@+id/imageView" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_id"
+        android:text="아이디"
+        android:layout_marginTop="68dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/login_pw"
+        android:text="비밀번호"
+        android:layout_below="@+id/login_id"
+        android:layout_marginTop="15dp"
+        android:layout_alignLeft="@+id/login_id"
+        android:layout_alignStart="@+id/login_id"
+        android:layout_alignRight="@+id/login_id"
+        android:layout_alignEnd="@+id/login_id" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인"
+        android:id="@+id/button"
+        android:layout_below="@+id/login_pw"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClick_login" />
+
+</RelativeLayout>
