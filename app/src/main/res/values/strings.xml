@@ -3,9 +3,15 @@
     <string name="app_name_kor">아이마켓</string>
     <string name="splash_detail">자신의 아이디어를 마음것 사고파세요!</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="menu_search">검색</string>
+
+    <string name="title_section1">아이마켓 홈</string>
+    <string name="title_section2">내가 알려준 생활 아이디어!</string>
+    <string name="title_section3"></string>
+
+    <string name="tab1">tab1</string>
+    <string name="tab2">tab2</string>
+    <string name="tab3">tab3</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

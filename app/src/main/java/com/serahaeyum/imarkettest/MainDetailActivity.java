@@ -1,9 +1,12 @@
 package com.serahaeyum.imarkettest;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.SearchManager;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.Nullable;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -11,6 +14,7 @@ import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,8 +22,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainDetailActivity extends ActionBarActivity
@@ -34,6 +40,7 @@ public class MainDetailActivity extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +54,8 @@ public class MainDetailActivity extends ActionBarActivity
 
         Intent intent_main = getIntent();
 
-        String id = intent_main.getStringExtra("아이디");
-        String pw = intent_main.getStringExtra("비밀번호");
+        String id = intent_main.getStringExtra("id");
+        String pw = intent_main.getStringExtra("password");
 
         textView_id.setText(String.valueOf(id));
         textView_pw.setText(String.valueOf(pw));
@@ -65,6 +72,17 @@ public class MainDetailActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+        Fragment objFragment = null;
+
+        switch(position) {
+            case 0:
+                objFragment = new DrawerMenu1();
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
@@ -101,11 +119,39 @@ public class MainDetailActivity extends ActionBarActivity
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
             getMenuInflater().inflate(R.menu.main, menu);
+            MenuItem searchItem = menu.findItem(R.id.action_search);
+            searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+            searchView.setQueryHint("두 자 이상 입력하세요");
+            searchView.setOnQueryTextListener(queryTextListener);
+            SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+            if(null!=searchManager ) {
+                searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+            }
+            // 검색필드를 항상 표시하고싶을 경우false, 아이콘으로 보이고 싶을 경우 true
+            searchView.setIconifiedByDefault(true);
             restoreActionBar();
             return true;
         }
         return super.onCreateOptionsMenu(menu);
     }
+
+    private SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
+        @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            InputMethodManager imm= (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(searchView.getWindowToken(), 0);
+            searchView.setQuery("", false);
+            searchView.setIconified(false);
+            Toast.makeText(getApplicationContext(), "search 결과", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            // TODO Auto-generated method stub
+            return false;
+        }
+    };
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

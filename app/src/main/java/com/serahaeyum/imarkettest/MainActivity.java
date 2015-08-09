@@ -25,8 +25,8 @@ public class MainActivity extends Activity {
 
         Intent intent_main = new Intent(getApplicationContext(), MainDetailActivity.class);
 
-        intent_main.putExtra("아이디", id);
-        intent_main.putExtra("비밀번호", pw);
+        intent_main.putExtra("id", id);
+        intent_main.putExtra("password", pw);
 
         startActivity(intent_main);
     }
