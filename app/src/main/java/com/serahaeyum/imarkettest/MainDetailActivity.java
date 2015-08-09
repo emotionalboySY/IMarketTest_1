@@ -200,6 +200,7 @@ public class MainDetailActivity extends ActionBarActivity
             return rootView;
         }
 
+
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);

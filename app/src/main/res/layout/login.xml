@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/login_id"
-        android:text="아이디"
+        android:hint="아이디"
         android:layout_marginTop="68dp"
         android:layout_below="@+id/imageView"
         android:layout_alignRight="@+id/imageView"
@@ -30,7 +30,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/login_pw"
-        android:text="비밀번호"
+        android:hint="비밀번호"
         android:layout_below="@+id/login_id"
         android:layout_marginTop="15dp"
         android:layout_alignLeft="@+id/login_id"
@@ -42,10 +42,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="로그인"
-        android:id="@+id/button"
+        android:id="@+id/login"
         android:layout_below="@+id/login_pw"
         android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
+        android:layout_alignRight="@id/login_pw"
         android:onClick="onClick_login" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:id="@+id/login_signup"
+        android:layout_below="@id/login_pw"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@id/login"
+        android:onClick="onClick_register" />
 
 </RelativeLayout>

@@ -3,5 +3,25 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:text="사업 아이디어"
+        android:textSize="14sp"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_biz"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        />
+    
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="생활 속 아이디어"
+        android:textSize="14sp"
+        android:id="@+id/button_life"
+        android:layout_below="@id/button_biz"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>
